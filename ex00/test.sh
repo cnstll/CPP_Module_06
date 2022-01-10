@@ -10,10 +10,7 @@ printTestName()
 {
     TEST_NAME=${1:1}
     echo 
-    echo "--------------------------"
-    echo "         $TEST_NAME     "
-    echo "--------------------------"
-    echo
+    echo "|>>>> $TEST_NAME <<<<|"   echo
 }
 
 isTestName()
