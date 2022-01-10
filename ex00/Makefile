@@ -1,6 +1,9 @@
 NAME = convert 
 
 SRCS = main.cpp  \
+	parsing.cpp \
+	helperFunctions.cpp \
+	convertFunctions.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -1,5 +1,4 @@
 #CHAR
- 
 !
 a
 b
@@ -12,16 +11,11 @@ $
 *
 )
 ~
-a12.2
-f12.2f
-a+inf
-a+inff
-anan
-ananf
+ 
 #INT
 0
 1
-1
+-1
 42
 -42
 -42f
@@ -53,5 +47,13 @@ nanf
 nan
 -2.14748e+09
 2.14748e+09
+#NOT SUPPORTED INPUTS
+
 1e+9999999999999999999999
 -1e+9999999999999999999999
+a12.2
+f12.2f
+a+inf
+a+inff
+anan
+ananf
