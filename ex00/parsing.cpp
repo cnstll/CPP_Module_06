@@ -25,8 +25,8 @@ std::string const parseType(const char *rawArg)
         return "impossible";
     while (securedIsDigit(arg[i]))
         i++;
-    if (arg[i] != '.')
-        return "integer";
+    if (arg[i] != '.' && arg[i])
+        return "impossible";
     j = i;
     i++;
     while (securedIsDigit(arg[i]))

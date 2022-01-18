@@ -22,3 +22,5 @@ The number of bits used by a data type is calles its width.
 `dynamic_cast<new_type&>(pointer_to_class_to_convert)` (throw std::bad_cast in case of failure) 
 * reinterpret casts
 `reinterpret_cast<new_type> var_to_convert`
+
+[On floats](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)

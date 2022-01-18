@@ -1,4 +1,5 @@
 #include "convert.hpp"
+#include <iomanip>
 
 void  convertToChar(const char *arg, const std::string &type){
 
@@ -26,11 +27,13 @@ void  convertToChar(const char *arg, const std::string &type){
         converted = strtod(arg, NULL);
         c = static_cast<char>(converted);
     }
-    if (securedIsPrint(c))
+    if (securedIsPrint(c) && converted <= 127 && converted >= 0)
     {
         printConversionLine("char"); 
         std::cout << c << std::endl;
     }
+    else if (converted > 127 || converted < 0)
+        printConversionImpossible("char");
     else
         printConversionNonDisplayble("char");
 };
@@ -68,21 +71,17 @@ void convertToFloat(const char *arg, const std::string &type){
     {
         f = static_cast<float>(arg[0]);
         printConversionLine("float"); 
-        std::cout << f << std::endl;
+        std::cout << std::fixed << std::setprecision(2) << f << "f" << std::endl;
         return ;
     }
-    double converted;
-    converted = strtod(arg, NULL);
+    double converted = strtod(arg, NULL);
     if (!isInFloatRange(converted) && type.compare("literal f") != 0 && type.compare("literal d") != 0)
         printConversionImpossible("float");
     else
     {
         f = static_cast<float>(converted);
         printConversionLine("float"); 
-        if (f == 0)
-            std::cout << f << ".0f" << std::endl;
-        else
-            std::cout << f << "f" << std::endl;
+        std::cout << std::fixed << std::setprecision(2) << f << "f" << std::endl;
     }
 };
 
@@ -94,21 +93,17 @@ void convertToDouble(const char *arg, const std::string &type){
     {
         d = static_cast<double>(arg[0]);
         printConversionLine("double"); 
-        std::cout << d << std::endl;
+        std::cout << std::fixed << std::setprecision(2) << d << std::endl;
         return ;
     }
-    double converted;
-    converted = strtod(arg, NULL);
+    double converted = strtod(arg, NULL);
     if (errno == ERANGE)
         printConversionImpossible("double");
     else
     {
         d = static_cast<double>(converted);
         printConversionLine("double"); 
-        if (d == 0)
-            std::cout << d << ".0" << std::endl;
-        else
-            std::cout << d << std::endl;
+        std::cout << std::fixed << std::setprecision(2) << d << std::endl;
 
     }
 };

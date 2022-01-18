@@ -9,8 +9,9 @@ compile_program()
 printTestName()
 {
     TEST_NAME=${1:1}
-    echo 
-    echo "|>>>> $TEST_NAME <<<<|"   echo
+    echo -e 
+    echo -e "|>>>> $TEST_NAME <<<<|"
+    echo -e
 }
 
 isTestName()
@@ -38,8 +39,8 @@ do_tests()
         then
             printTestName "$INPUT_TO_TEST"
         else
-            echo -n "Test Line: $TEST_NO -- "
-            echo "Input: \""$INPUT_TO_TEST"\""
+            echo -en "Test Line: $TEST_NO -- "
+            echo -e "Input: \""$INPUT_TO_TEST"\""
             ./$PROGRAM_NAME "$INPUT_TO_TEST"
         fi
         TEST_NO=$((TEST_NO + 1))

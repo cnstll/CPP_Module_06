@@ -11,7 +11,7 @@ std::string const parseType(const char *rawArg);
 /*
  *  Convert Functions
  */
-void  convertToChar(const char *arg, const std::string &type);
+void convertToChar(const char *arg, const std::string &type);
 void convertToInt(const char *arg, const std::string &type);
 void convertToFloat(const char *arg, const std::string &type);
 void convertToDouble(const char *arg, const std::string &type);
