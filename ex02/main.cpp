@@ -14,16 +14,26 @@
  
 Base *generate(void){
 
-  	srand(time(NULL));
-	unsigned int randomValue = rand() % 3;
+    static bool done = false;
+    if (done == false) {
+  	    std::srand(time(NULL));
+        done = true;
+    }
+	unsigned int randomValue = std::rand() % 3;
     Base *ptr;
 
-    if (randomValue == 0)
+    if (randomValue == 0) {
+        std::cout << "Generated class: " << "A\n";
         ptr = new A();
-    else if (randomValue == 1)
+    }
+    else if (randomValue == 1){
+        std::cout << "Generated class: " << "B\n";
         ptr = new B();
-    else
+    }
+    else {
+        std::cout << "Generated class: " << "C\n";
         ptr = new C();
+    }
     return ptr;
 };
 
@@ -33,7 +43,7 @@ Base *generate(void){
 
 void identify(Base * p){
 
-    std::cout << "type: ";
+    std::cout << ">> type identified: ";
     A *a = dynamic_cast<A*>(p);
     if (a != NULL)
     {
@@ -61,7 +71,7 @@ void identify(Base * p){
 
 void identify( Base & p){
     
-    std::cout << "type: ";
+    std::cout << ">> type identified: ";
     try {
         A &a = dynamic_cast<A&>(p);
         std::cout << "A\n";
@@ -88,8 +98,9 @@ void identify( Base & p){
 int main( void )
 {
     Base *ptr = generate();
-    Base &ref = *generate();
     identify(ptr);
+    std::cout << std::endl;
+    Base &ref = *generate();
     identify(ref);
     delete ptr;
     return 0;
